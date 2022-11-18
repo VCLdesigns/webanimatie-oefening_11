@@ -4,8 +4,7 @@
 @font-face {
   font-family: "domineregular";
   src: url("../fonts/domine-regular-webfont.eot");
-  src: url("../fonts/domine-regular-webfont.eot?#iefix")
-      format("embedded-opentype"),
+  src: url("../fonts/domine-regular-webfont.eot?#iefix") format("embedded-opentype"),
     url("../fonts/domine-regular-webfont.woff2") format("woff2"),
     url("../fonts/domine-regular-webfont.woff") format("woff"),
     url("../fonts/domine-regular-webfont.ttf") format("truetype"),
@@ -13,24 +12,23 @@
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "montserratregular";
   src: url("../fonts/montserrat-regular-webfont.eot");
-  src: url("../fonts/montserrat-regular-webfont.eot?#iefix")
-      format("embedded-opentype"),
+  src: url("../fonts/montserrat-regular-webfont.eot?#iefix") format("embedded-opentype"),
     url("../fonts/montserrat-regular-webfont.woff2") format("woff2"),
     url("../fonts/montserrat-regular-webfont.woff") format("woff"),
     url("../fonts/montserrat-regular-webfont.ttf") format("truetype"),
-    url("../fonts/montserrat-regular-webfont.svg#montserratregular")
-      format("svg");
+    url("../fonts/montserrat-regular-webfont.svg#montserratregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "open_sansregular";
   src: url("../fonts/opensans-regular-webfont.eot");
-  src: url("../fonts/opensans-regular-webfont.eot?#iefix")
-      format("embedded-opentype"),
+  src: url("../fonts/opensans-regular-webfont.eot?#iefix") format("embedded-opentype"),
     url("../fonts/opensans-regular-webfont.woff2") format("woff2"),
     url("../fonts/opensans-regular-webfont.woff") format("woff"),
     url("../fonts/opensans-regular-webfont.ttf") format("truetype"),
@@ -38,6 +36,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 /*
 /* Variabelen */
 :root {
@@ -47,6 +46,7 @@
   --kleur_wit: #f8f7f3;
   --kleur_zwart: #303030;
 }
+
 /* 
 /* Reset */
 * {
@@ -54,6 +54,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 /*
 /* Standards */
 body {
@@ -68,46 +69,260 @@ body {
 #container {
   padding: 2vh;
 }
+
 h1 {
   text-align: center;
   font-family: var(--font_titel);
   padding: 25px 0;
 }
-#lucht{
+
+#speelveld {
   position: relative;
   width: 960px;
-  height: 400px;
-  background: linear-gradient(to bottom, #45484d 0%,#000000 100%);
-}
-.ster{
-  position: absolute;
-  background-color: white;
-  border-radius: 50%;
-}
-.ster:nth-of-type(even){
-  width: 5px;
-  height: 5px;
-}
-.ster:nth-of-type(odd){
-  width: 10px;
-  height: 10px;
+  height: 500px;
+  margin: 0 auto;
 }
 
-@keyframes knipperen {
-  0%{
-    opacity: 1;
-  }
-  100%{
+.button {
+  position: absolute;
+  bottom: -60px;
+  left: calc(50% - 75px);
+  display: block;
+  transition: transform 5s linear;
+  transform: rotate(-180deg);
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.lucht {
+  position: absolute;
+  top: 100px;
+  left: calc(50% - 480px);
+  width: 960px;
+  height: 400px;
+  overflow: hidden;
+  transition: background 0.2s linear;
+}
+
+
+#dag {
+  background: linear-gradient(to bottom, #c5deea 0%, #8abbd7 31%, #066dab 100%);
+
+}
+
+#nacht {
+  background: linear-gradient(to top, #45484d 0%, #000000 100%);
+
+}
+
+.verborgen {
+  opacity: 0;
+}
+
+.hemellichaam {
+  position: absolute;
+  bottom: -50%;
+  left: 70%;
+  display: block;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+}
+
+#zon {
+  background: orange;
+  box-shadow: 0 0 10px orange,
+    0 0 60px orange,
+    0 0 117px yellow,
+    inset 0 0 80px yellow;
+  opacity: 0;
+}
+
+#maan {
+  background: #F8F9EC;
+  box-shadow: 0 0 10px #F8F9EC,
+    0 0 60px #F8F9EC,
+    0 0 117px #eaf0a9,
+    inset 0 0 80px #eaf0a9;
+    bottom: calc(50% - 100px);
+    left: calc(50% - 100px);
+  opacity: 1;
+}
+
+@keyframes opkomen {
+  0% {
+    bottom: calc(-50% - 100px);
+    left: calc(150% - 100px);
     opacity: 0;
   }
 
-  
+  10% {
+    bottom: calc(-40% - 100px);
+    left: calc(140% - 100px);
+    opacity: 1;
+  }
+
+  20% {
+    bottom: calc(-30% - 100px);
+    left: calc(130% - 100px);
+    opacity: 1;
+  }
+
+  30% {
+    bottom: calc(-20% - 100px);
+    left: calc(120% - 100px);
+    opacity: 1;
+  }
+
+  40% {
+    bottom: calc(-10% - 100px);
+    left: calc(110% - 100px);
+    opacity: 1;
+  }
+
+  50% {
+    bottom: calc(0% - 100px);
+    left: calc(100% - 100px);
+    opacity: 1;
+  }
+
+  60% {
+    bottom: calc(10% - 100px);
+    left: calc(90% - 100px);
+    opacity: 1;
+  }
+
+  70% {
+    bottom: calc(20% - 100px);
+    left: calc(80% - 100px);
+    opacity: 1;
+  }
+
+  80% {
+    bottom: calc(30% - 100px);
+    left: calc(70% - 100px);
+    opacity: 1;
+  }
+
+  90% {
+    bottom: calc(40% - 100px);
+    left: calc(60% - 100px);
+    opacity: 1;
+  }
+
+  100% {
+    bottom: calc(50% - 100px);
+    left: calc(50% - 100px);
+    opacity: 1;
+  }
+
 }
-footer{
+
+@keyframes ondergaan {
+  100% {
+    bottom: calc(-50% - 100px);
+    left: calc(-50% - 100px);
+    opacity: 0;
+  }
+
+  90% {
+    bottom: calc(-40% - 100px);
+    left: calc(-40% - 100px);
+    opacity: 1;
+  }
+
+  80% {
+    bottom: calc(-30% - 100px);
+    left: calc(-30% - 100px);
+    opacity: 1;
+  }
+
+  70% {
+    bottom: calc(-20% - 100px);
+    left: calc(-20% - 100px);
+    opacity: 1;
+  }
+
+  60% {
+    bottom: calc(-10% - 100px);
+    left: calc(-10% - 100px);
+    opacity: 1;
+  }
+
+  50% {
+    bottom: calc(0% - 100px);
+    left: calc(0% - 100px);
+    opacity: 1;
+  }
+
+  40% {
+    bottom: calc(10% - 100px);
+    left: calc(10% - 100px);
+    opacity: 1;
+  }
+
+  30% {
+    bottom: calc(20% - 100px);
+    left: calc(20% - 100px);
+    opacity: 1;
+  }
+
+  20% {
+    bottom: calc(30% - 100px);
+    left: calc(30% - 100px);
+    opacity: 1;
+  }
+
+  10% {
+    bottom: calc(40% - 100px);
+    left: calc(40% - 100px);
+    opacity: 1;
+  }
+
+  0% {
+    bottom: calc(50% - 100px);
+    left: calc(50% - 100px);
+    opacity: 1;
+  }
+
+}
+
+.ster {
+  position: absolute;
+  background-color: #F8F9EC;
+  border-radius: 50%;
+  transition: transform 0.1s linear;
+
+}
+
+@keyframes knipperen {
+  0% {
+    opacity: 1;
+  }
+
+  33% {
+    opacity: 0;
+  }
+
+  66% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+footer {
   display: flex;
   justify-content: space-around;
   font-family: var(--font_subtitel);
+  padding: 4rem 0 2rem 0;
 }
+
 @media (min-width: 750px) {
   #container {
     margin: 0 auto;
@@ -115,4 +330,3 @@ footer{
     max-width: 1200px;
   }
 }
-	
